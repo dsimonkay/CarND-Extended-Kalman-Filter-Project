@@ -5,6 +5,9 @@
 class KalmanFilter {
 public:
 
+  Eigen::VectorXd prev_x_;
+  Eigen::MatrixXd prev_P_;
+
   // state vector
   Eigen::VectorXd x_;
 
