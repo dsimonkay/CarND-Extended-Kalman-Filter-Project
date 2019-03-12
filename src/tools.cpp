@@ -3,14 +3,13 @@
 
 using Eigen::VectorXd;
 using Eigen::MatrixXd;
-using std::vector;
 
 Tools::Tools() {}
 
 Tools::~Tools() {}
 
-VectorXd Tools::CalculateRMSE(const vector<VectorXd> &estimations,
-                              const vector<VectorXd> &ground_truth) {
+VectorXd Tools::CalculateRMSE(const std::vector<VectorXd> &estimations,
+                              const std::vector<VectorXd> &ground_truth) {
   VectorXd rmse(4);
   rmse << 0, 0, 0, 0;
 

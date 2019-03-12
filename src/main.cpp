@@ -1,11 +1,11 @@
 #include <uWS/uWS.h>
 #include <iostream>
+#include <string>
+#include <vector>
 #include "json.hpp"
 #include <math.h>
 #include "FusionEKF.h"
 #include "tools.h"
-
-using namespace std;
 
 // for convenience
 using json = nlohmann::json;
@@ -37,8 +37,8 @@ int main()
 
   // used to compute the RMSE later
   Tools tools;
-  vector<VectorXd> estimations;
-  vector<VectorXd> ground_truth;
+  std::vector<VectorXd> estimations;
+  std::vector<VectorXd> ground_truth;
 
   h.onMessage([&fusionEKF,&tools,&estimations,&ground_truth](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode) {
 
@@ -56,14 +56,14 @@ int main()
         
         if (event == "telemetry") {
           // j[1] is the data JSON object
-          string sensor_measurment = j[1]["sensor_measurement"];
+          std::string sensor_measurment = j[1]["sensor_measurement"];
           
           MeasurementPackage meas_package;
-          istringstream iss(sensor_measurment);
+          std::istringstream iss(sensor_measurment);
           long long timestamp;
 
           // reads first element from the current line
-          string sensor_type;
+          std::string sensor_type;
           iss >> sensor_type;
 
           if (sensor_type.compare("L") == 0) {
